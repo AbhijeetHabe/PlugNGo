@@ -4,11 +4,9 @@ import "../Components/Header";
 
 export const AdminPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [chargingStations, setChargingStations] = useState([
-    { id: 1, name: "Station 1", location: "Location A", status: "Active" },
-    { id: 2, name: "Station 2", location: "Location B", status: "Active" },
-    // Add more charging station data as needed
-  ]);
+  const [chargingStations, setChargingStations] = useState(
+    { station_name: "", address: "", contact: 0, image_data: "" },
+  );
 
   const [showForm, setShowForm] = useState(false);
   const [newStationData, setNewStationData] = useState({

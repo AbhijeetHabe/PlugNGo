@@ -1,10 +1,38 @@
 import React, { useState } from "react";
 import "./Register.css";
+import axios from "axios";
 
 export const Register = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+    email: "",
+    role: []
+  })
+
+  const instance = axios.create({
+    baseURL: 'http://localhost:9090',
+    headers: { "skip-browser-warning": "true" }
+  })
+
+  const submitRegister = () => {
+    setUser({
+      username: name,
+      password: pass,
+      email: email,
+      role: [selectedRole]
+    })
+    instance.post("api/auth/signup", user)
+      .then(response => {
+        console.log('Registration successful:', response.data);
+      })
+      .catch(error => {
+        console.error('Registration failed:', error.response.data);
+      })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +86,7 @@ export const Register = (props) => {
           {selectedRole === "user" && <p>Register as User!</p>}
           {selectedRole === "admin" && <p>Register as Admin!</p>}
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" onClick={submitRegister}>Register</button>
       </form>
     </div>
   );
