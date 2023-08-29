@@ -1,0 +1,33 @@
+.slideshow {
+  /* position: relative; */
+  width: 100vw;
+  height: 100vh;
+  /* overflow: hidden; */
+  padding: 0px;
+  margin: 0px;
+}
+
+.slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.next-button {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #293a29;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+  background-color: #008a02;
+}
