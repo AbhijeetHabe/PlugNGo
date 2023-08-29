@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Register.css";
 
 export const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -9,10 +10,17 @@ export const Register = (props) => {
     e.preventDefault();
     console.log(email);
   };
+  const [selectedRole, setSelectedRole] = useState("user");
+
+  const handleRoleChange = (event) => {
+    setSelectedRole(event.target.value);
+  };
 
   return (
     <div className="auth-form-container">
-      <h2>Register</h2>
+      <ur>
+        <h2>Register</h2>
+      </ur>
       <form className="register-form" onSubmit={handleSubmit}>
         <label htmlFor="name">Full name</label>
 
@@ -41,7 +49,16 @@ export const Register = (props) => {
           id="password"
           name="password"
         />
-        <button type="submit">Log In</button>
+        <div>
+          <h2>Select Role:</h2>
+          <select value={selectedRole} onChange={handleRoleChange}>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+          {selectedRole === "user" && <p>Register as User!</p>}
+          {selectedRole === "admin" && <p>Register as Admin!</p>}
+        </div>
+        <button type="submit">Register</button>
       </form>
     </div>
   );

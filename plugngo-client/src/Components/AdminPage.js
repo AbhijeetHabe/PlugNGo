@@ -25,6 +25,10 @@ export const AdminPage = () => {
     setShowForm(true); // Show the form when adding a new station
   };
 
+  const handleLogoutStation = () => {
+    setShowForm(true); // Show the form when adding a new station
+  };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setNewStationData((prevData) => ({ ...prevData, [name]: value }));
@@ -60,8 +64,12 @@ export const AdminPage = () => {
   return (
     <div className="admin-page">
       <header>
-        <div className="header-section">PLUGNgo</div>
-        <div className="header-section">Logout</div>
+        <h4>
+          <div className="header-section">PLUGNGo</div>
+        </h4>
+        <button onClick={handleLogoutStation}>
+          <div className="header-section">Logout</div>
+        </button>
       </header>
       <main>
         <h1>My Charging Stations</h1>

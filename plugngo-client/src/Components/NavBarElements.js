@@ -5,12 +5,14 @@ import styled from "styled-components";
 export const Nav = styled.nav`
   background: #63d471;
   height: 100px;
+  width: 196%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 
-  z-index: 12;
+  z-index: 1;
   /* Third Nav */
-  /* justify-content: flex-start; */
+  justify-content: flex-right;
 `;
 
 export const NavLink = styled(Link)`
@@ -20,6 +22,7 @@ export const NavLink = styled(Link)`
   text-decoration: none;
   padding: 0 1rem;
   height: 100%;
+  width: 100%;
   cursor: pointer;
   &.active {
     color: #000000;
@@ -29,6 +32,7 @@ export const NavLink = styled(Link)`
 export const Bars = styled(FaBars)`
   display: none;
   color: #808080;
+  object-fit: "cover";
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
@@ -45,7 +49,7 @@ export const NavMenu = styled.div`
   align-items: center;
   margin-right: -24px;
   /* Second Nav */
-  /* margin-right: 24px; */
+  margin-right: 24px;
   /* Third Nav */
   /* width: 100vw;
   white-space: nowrap; */
@@ -77,7 +81,7 @@ export const NavBtnLink = styled(Link)`
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   /* Second Nav */
-  margin-left: 24px;
+  margin-left: 10px;
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #fff;

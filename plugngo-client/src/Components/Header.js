@@ -3,6 +3,7 @@
 //import Nav from "react-bootstrap/Nav";
 //import Navbar from "react-bootstrap/Navbar";
 //import { Login } from "./Components/Login";
+import "./Header.css";
 import {
   Nav,
   NavLink,
@@ -19,7 +20,10 @@ const Header = () => {
         <Bars />
 
         <NavMenu>
-          <NavLink to="/home">PLUGNGo</NavLink>
+          <h1>
+            <NavLink to="/home">PLUGNGo</NavLink>
+          </h1>
+
           <NavLink to="/about">About</NavLink>
           <NavLink to="/services">Services</NavLink>
           <NavLink to="/contactus">Contact</NavLink>
@@ -27,7 +31,6 @@ const Header = () => {
         <NavBtn>
           <NavBtnLink to="/login">Sign In</NavBtnLink>
           <NavBtnLink to="/register">Sign Up</NavBtnLink>
-          <NavBtnLink to="/adminpage">Admin</NavBtnLink>
         </NavBtn>
       </Nav>
     </>

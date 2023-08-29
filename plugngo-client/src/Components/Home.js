@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Home.css";
 const Home = () => {
   const images = [
-    "https://cdn.mozo.com.au/images/atwood/14293/shifting-gears-on-electric-cars-evx-targets-ev-charging.png?width=714",
+    "https://deltaelectronicsindia.com/wp-content/uploads/2020/02/ev-1.png",
     "https://blogs.iadb.org/energia/wp-content/uploads/sites/16/2021/08/Electric-Vehicles-Charging-Infrastructure.png",
     "https://www.einfochips.com/blog/wp-content/uploads/2021/05/an-overview-of-electric-vehicle-charging-station-infrastructure-blog-fetaured.jpg",
   ];

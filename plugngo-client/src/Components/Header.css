@@ -1,0 +1,27 @@
+.header {
+  background-color: #292c3a;
+  color: rgb(255, 255, 255);
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li a {
+  font-size: 1.2em;
+  text-align: left;
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #00b518;
+  object-fit: cover;
+}

@@ -1,3 +1,4 @@
+import "./ContactUs.css";
 const ContactUs = () => {
   return (
     <section id="contact-form">

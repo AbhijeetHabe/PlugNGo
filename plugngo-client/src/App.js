@@ -1,7 +1,8 @@
 import React from "react";
 //import logo from "./logo.svg";
 import "./App.css";
-import "./Components/Login.css";
+//import "./Components/ContactUs.css";
+//import "./Components/Login.css";
 import "./Components/Register.css";
 import Home from "./Components/Home";
 import { Header } from "./Components/Header";
