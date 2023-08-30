@@ -3,6 +3,7 @@ package com.cdac.plugngo.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -32,7 +33,7 @@ public class ChargingStation {
 	
 	private byte[] image_data;
 	
-	@JsonManagedReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "station", cascade = CascadeType.ALL)
 	private List<ChargingSlot> chargingSlotList;
 	

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -26,7 +27,6 @@ public class ChargingSlot {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int slot_id;
 	
-	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "station_id")
 	private ChargingStation station;
@@ -36,7 +36,7 @@ public class ChargingSlot {
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Kolkata")
 	private LocalDateTime charging_time;
 	
-	@JsonManagedReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "slot", cascade = CascadeType.ALL)
 	private List<ChargingLog> chargingLogList;
 

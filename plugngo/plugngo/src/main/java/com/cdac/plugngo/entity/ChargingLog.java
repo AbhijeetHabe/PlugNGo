@@ -26,7 +26,6 @@ public class ChargingLog {
 	private LocalDateTime end_time;
 	
 	@ManyToOne
-	@JsonBackReference
 	@JoinColumn(name = "slot_id")
 	private ChargingSlot slot;
 	

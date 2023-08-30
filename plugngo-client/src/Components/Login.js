@@ -1,38 +1,52 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 
 export const Login = () => {
   const [usernam, setUsername] = useState("");
   const [pass, setPass] = useState("");
-  const [userLog, setUserLog] = useState({
-    username: "",
-    password: ""
-  })
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(usernam);
+    submitLogin();
   };
 
   const instance = axios.create({
     baseURL: 'http://localhost:9090',
     headers: { "skip-browser-warning": "true" }
-  })
+  });
 
   const submitLogin = () => {
-    setUserLog({
-      password: pass,
+    const userLog = {
       username: usernam,
-    })
+      password: pass,
+    };
+
     instance.post("api/auth/signin", userLog)
       .then((response) => {
-        console.log('Registration successful:', response.data);
+        console.log("Response Data:", response.data);
+
+        // Check if response.data is defined and contains the role property
+        if (response.data && response.data.roles) {
+          if (response.data.roles.includes("ROLE_ADMIN")) {
+            sessionStorage.setItem("admin", JSON.stringify(response.data));
+            navigate(`/admin`);
+          } else if (response.data.roles.includes("ROLE_USER")) {
+            sessionStorage.setItem("user", JSON.stringify(response.data));
+            navigate(`/admin`);
+          }
+        } else {
+          console.error("Login Error: Invalid response data format");
+        }
       })
-      .catch(error => {
-        console.error('Registration failed:', error.response.data);
-      })
-  }
+      .catch((error) => {
+        console.error("Login Error:", error);
+      });
+  };
+
 
   return (
     <div className="auth-form-container">
@@ -56,7 +70,7 @@ export const Login = () => {
           id="password"
           name="password"
         />
-        <button type="submit" onClick={submitLogin}>Log In</button>
+        <button type="submit">Log In</button>
       </form>
     </div>
   );

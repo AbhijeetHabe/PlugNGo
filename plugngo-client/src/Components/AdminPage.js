@@ -1,17 +1,20 @@
 import React, { useState } from "react";
+import api from "../api/axiosConfig";
 import "./AdminPage.css";
 import "../Components/Header";
 
 export const AdminPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [chargingStations, setChargingStations] = useState(
-    { station_name: "", address: "", contact: 0, image_data: "" },
-  );
+  const [chargingStations, setChargingStations] = useState([
+    { station_name: "", contact: "", address: "", status: "" }
+    // Add more charging station data as needed
+  ]);
 
   const [showForm, setShowForm] = useState(false);
   const [newStationData, setNewStationData] = useState({
-    name: "",
-    location: "",
+    station_name: "",
+    address: "",
+    contact: "",
     photos: [],
   });
 
@@ -40,15 +43,17 @@ export const AdminPage = () => {
   const handleSubmit = () => {
     // Add new station data to the chargingStations array
     const newStation = {
-      id: chargingStations.length + 1,
-      name: newStationData.name,
-      location: newStationData.location,
+      station_name: newStationData.station_name,
+      address: newStationData.address,
+      contact: newStationData.contact,
       status: "Active", // Assuming all new stations are active
     };
 
+    api.post("/api/v1/addStation", newStation);
+
     setChargingStations([...chargingStations, newStation]);
     setShowForm(false); // Hide the form after submitting
-    setNewStationData({ name: "", location: "", photos: [] });
+    setNewStationData({ station_name: "", contact: "", address: "", photos: [] });
   };
 
   const handleDeleteStation = (stationId) => {
@@ -87,14 +92,21 @@ export const AdminPage = () => {
               <input
                 type="text"
                 name="name"
-                value={newStationData.name}
+                value={newStationData.station_name}
                 onChange={handleInputChange}
               />
-              <label>Location</label>
+              <label> address</label>
               <input
                 type="text"
-                name="location"
-                value={newStationData.location}
+                name="address"
+                value={newStationData.address}
+                onChange={handleInputChange}
+              />
+              <label>Contact</label>
+              <input
+                type="text"
+                name="contact"
+                value={newStationData.contact}
                 onChange={handleInputChange}
               />
               <label>Photos</label>
@@ -112,7 +124,7 @@ export const AdminPage = () => {
           <ul className="station-list">
             {chargingStations.map((station) => (
               <li key={station.id}>
-                <strong>{station.name}</strong> - {station.location} (
+                <strong>{station.station_name}</strong> - {station.address} (
                 {station.status})
                 <button onClick={() => handleDeleteStation(station.id)}>
                   Delete
